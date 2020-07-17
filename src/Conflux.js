@@ -301,20 +301,29 @@ class Conflux {
    * @example
    * > await cfx.getAccount("0xbbd9e9be525ab967e633bcdaeac8bd5723ed4d6b");
    {
-     "accumulatedInterestReturn": "0x0",
-     "admin": "0x1a2a919f9e4c113746d5a3a0ec1757049d85eb28",
-     "balance": "0x0",
-     "codeHash": "0x1b4810b26cfbd478a03a9f5026313d34e9d7ce6f1d0a26d55f33d1dea8f5e15d",
-     "collateralForStorage": "0x0",
-     "nonce": "0x1",
-     "stakingBalance": "0x0"
+     "accumulatedInterestReturn": ...,
+     "admin": ...,
+     "balance": ...,
+     "codeHash": ...,
+     "collateralForStorage": ...,
+     "nonce": ...,
+     "stakingBalance": ...
    }
    */
   async getAccount(address, epochNumber) {
-    return this.provider.call('cfx_getAccount',
+    const account = await this.provider.call('cfx_getAccount',
       format.address(address),
       format.epochNumber.or(undefined)(epochNumber),
     );
+    return {
+      accumulatedInterestReturn: format.bigUInt(account.accumulatedInterestReturn),
+      admin: account.admin,
+      balance: format.bigUInt(account.balance),
+      codeHash: account.codeHash,
+      collateralForStorage: format.bigUInt(account.collateralForStorage),
+      nouce: account.nouce,
+      stakingBalance: format.bigUInt(account.stakingBalance),
+    };
   }
 
   /**
