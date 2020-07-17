@@ -292,6 +292,32 @@ class Conflux {
   }
 
   /**
+   * Get account information of an address at a given epochNumber.
+   *
+   * @param address {string} - The address to get the balance of.
+   * @param [epochNumber] {string|number} - The end epochNumber to count balance of.
+   * @return {Promise<object|null>} Account information.
+   *
+   * @example
+   * > await cfx.getAccount("0xbbd9e9be525ab967e633bcdaeac8bd5723ed4d6b");
+   {
+     "accumulatedInterestReturn": "0x0",
+     "admin": "0x1a2a919f9e4c113746d5a3a0ec1757049d85eb28",
+     "balance": "0x0",
+     "codeHash": "0x1b4810b26cfbd478a03a9f5026313d34e9d7ce6f1d0a26d55f33d1dea8f5e15d",
+     "collateralForStorage": "0x0",
+     "nonce": "0x1",
+     "stakingBalance": "0x0"
+   }
+   */
+  async getAccount(address, epochNumber) {
+    return this.provider.call('cfx_getAccount',
+      format.address(address),
+      format.epochNumber.or(undefined)(epochNumber),
+    );
+  }
+
+  /**
    * Get the address next transaction nonce.
    *
    * @param address {string} - The address to get the numbers of transactions from.
