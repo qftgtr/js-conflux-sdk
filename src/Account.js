@@ -129,7 +129,7 @@ class Account {
    {
       version: 3,
       id: '0bb47ee0-aac3-a006-2717-03877afa15f0',
-      address: '0x1cad0b19bb29d4674531d6f115237e16afce377c',
+      address: '1cad0b19bb29d4674531d6f115237e16afce377c',
       crypto: {
         ciphertext: 'a8ec41d2440311ce897bacb6f7942f3235113fa17c4ae6732e032336038a8f73',
         cipherparams: { iv: '85b5e092c1c32129e3d27df8c581514d' },
@@ -153,7 +153,7 @@ class Account {
     return {
       version: 3,
       id: uuidV4(),
-      address: this.address,
+      address: this.address.replace(/^0x/, ''),
       crypto: {
         ciphertext: cipher.toString('hex'),
         cipherparams: { iv: iv.toString('hex') },
