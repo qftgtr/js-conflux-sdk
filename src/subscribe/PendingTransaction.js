@@ -58,9 +58,9 @@ class PendingTransaction extends LazyPromise {
     return loop({ delta, timeout }, async () => {
       const receipt = await this.cfx.getTransactionReceipt(txHash);
       if (receipt) {
-        if (receipt.outcomeStatus !== 0) {
-          throw new Error(`transaction "${txHash}" executed failed, outcomeStatus ${receipt.outcomeStatus}`);
-        }
+        // if (receipt.outcomeStatus !== 0) {
+        //   throw new Error(`transaction "${txHash}" executed failed, outcomeStatus ${receipt.outcomeStatus}`);
+        // }
 
         return receipt;
       }
