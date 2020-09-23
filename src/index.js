@@ -4,6 +4,7 @@ const Account = require('./Account');
 const Transaction = require('./Transaction');
 const Message = require('./Message');
 const provider = require('./provider');
+const abi = require('./abi');
 
 module.exports = {
   util,
@@ -12,4 +13,5 @@ module.exports = {
   Transaction,
   Message,
   provider,
+  abi,
 };
